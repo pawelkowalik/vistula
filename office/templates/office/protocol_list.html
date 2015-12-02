@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/static/style.css" />
+	<title></title>
+</head>
+<body>
+<a href="{% url "add-protocol"%}">Dodaj protokół</a><br>
+{% for protocol in protocol_list %}
+<a href="{% url "protocol-detail" protocol.slug %}">{{ protocol.slug }}</a><br>
+{% endfor %}
+</body>
+</html>

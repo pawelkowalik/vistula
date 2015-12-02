@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/static/style.css" />
+</head>
+<body>
+<table>
+	<form method="post" class="form-horizontal" role="form">
+		{% csrf_token %}
+				<div class="form-group">
+					{% for field in form %}
+							<tr>
+								<td id="form_label">{{ field.label }}</td>
+								<td>{{ field }}</td>
+								<td id="form_errors">{% for error in field.errors %}{{ error }}{% endfor %}</td>
+							</tr>
+					{% endfor %}
+				</div>
+		<tr><td></td>
+			<td>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default">Dodaj</button>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</form>
+	</table>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/static/style.css" />
+	<title></title>
+</head>
+<body>
+<div id="protocol_content">
+	<div id="protocol_header">
+		<p><img src="{{ STATIC_URL }}/static/img/vistula.png" align="left" height="30">
+		<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<b>SPÓŁDZIELNIA BUDOWLANO-MIESZKANIOWA "VISTULA"</b></p>
+		<hr color="black" size="1">
+	</div>
+	<div id="protocol_title">
+		PROTOKÓŁ ODBIORU ROBÓT
+	</div>
+	<div id="protocol_title_underline">
+		---------------------------------------------------------------------<br>
+		(częściowy-końcowy)
+	</div>
+	<div id="paragraph_1">
+		Obiekt: {{ protocol.object }}<br>
+		Wykonany przez: {{ protocol.contractor }}<br>
+		Na podstawie wyceny: {{ protocol.agreement }}<br>
+		I zlecenie nr: {{ protocol.order }}{% ifequal protocol.order ""  %}------------------{% endifequal %}
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z dnia {{ protocol.agreement_day }}
+
+	</div>
+	<div id="paragraph_2">
+		<b>KOMISJA W SKŁADZIE</b><br>
+		1. {{ protocol.inv1 }}<br>
+		2. {{ protocol.inv2 }}{% ifequal protocol.inv2 ""  %}------------------{% endifequal %}<br>
+		3. {{ protocol.inv3 }}{% ifequal protocol.inv3 ""  %}------------------{% endifequal %}
+
+
+	</div>
+	<div id="paragraph_3">
+		<b>WYKONAWCA</b><br>
+		1. {{ protocol.cont1 }}<br>
+		2. {{ protocol.cont2 }}{% ifequal protocol.cont2 ""  %}------------------{% endifequal %}
+	</div>
+	<div id="paragraph_4">
+		&nbsp;&nbsp;&nbsp;&nbsp;W dniu {{ protocol.date|date:" d.m.Y " }} komisja dokonała odbioru niżej wymienionych robót:<br>
+		{{ protocol.works }}
+	</div>
+	<div id="paragraph_5">
+		<b>Komisja stwierdza co następuje:</b><br>
+		1. Roboty zostały wykonane {{ protocol.works_quality }}<br><br>
+		2. Usterki: {{ protocol.mistakes }}{% ifequal protocol.mistakes ""  %}------------------{% endifequal %}<br><br>
+		3. Komisja zobowiązuje wykonawcę do usunięcia usterek w terminie do dnia: {{ protocol.correct_mistakes_day }}
+		{% ifequal protocol.correct_mistakes_day ""  %}------------------{% endifequal %}<br>
+		4. Komisja postanawia {{ protocol.resolutions }}
+
+	</div>
+	<div id="paragraph_6">
+		<b>Na tym protokół zakończono i podpisano KOMISJA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Przyjęto dnia {{ protocol.date|date:" d.m.Y " }}</b><br>
+		1. ..............................................................................
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		3. ..............................................................................<br>
+		2. ..............................................................................
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		4. ..............................................................................<br>
+
+	</div>
+
+
+</div>
+</body>
+</html>
