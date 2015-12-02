@@ -1,0 +1,13 @@
+*.py[co]
+
+<<<<<<< HEAD
+.coverage
+=======
+>>>>>>> 2-add_training_form
+.idea/
+
+media
+*.sqlite3
+
+CACHE
+__pycache__
